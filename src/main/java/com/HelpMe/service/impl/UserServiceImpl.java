@@ -32,16 +32,20 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public Optional<User> getById(Integer id) {
-		System.out.print("id service" + id);
-		Optional<User> user = repo.findById(id);
+	public Optional<User> getUser(String document) {
+		System.out.print("id service" + document);
+		Optional<User> user = repo.findById(document);
 		return user;
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public boolean delete(String document) {
 		
-		repo.deleteById(id);
+		Boolean aBoolean = getUser(document).map(user -> {
+			repo.delete(user);
+			return true;
+		}).orElse(false);
+		return aBoolean;
 
 	}
 

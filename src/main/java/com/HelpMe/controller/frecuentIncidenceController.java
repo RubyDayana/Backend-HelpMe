@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.HelpMe.entity.FrecuentIncidence;
-import com.HelpMe.entity.User;
 import com.HelpMe.service.IFrecuentincidenceService;
 
 @RequestMapping("/frecuentIncidence")

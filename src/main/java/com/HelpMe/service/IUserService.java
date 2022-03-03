@@ -9,8 +9,8 @@ import com.HelpMe.entity.User;
 public interface IUserService {
 	public void save(User user);
 	public List<User> all();
-	public Optional<User> getById(Integer id);
-	public void delete(Integer id);
+	public Optional<User> getUser(String document);
+	public boolean delete(String document);
 	public void update(User user);
 
 }

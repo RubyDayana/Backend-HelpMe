@@ -47,10 +47,10 @@ public class userController {
 
 	}
 
-	@GetMapping(value = "/getById/{id}", produces = "application/json")
-	public ResponseEntity<?> getById(@PathVariable Integer id) {
-		System.out.print("nombre" + id);
-		Optional<User> user = service.getById(id);
+	@GetMapping(value = "/getUser/{document}", produces = "application/json")
+	public ResponseEntity<?> getUser(@PathVariable String document) {
+		System.out.print("nombre" + document);
+		Optional<User> user = service.getUser(document);
 
 		return new ResponseEntity<>(user, HttpStatus.OK);
 
@@ -64,9 +64,9 @@ public class userController {
 	}
 
 	// 204
-	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<?> delete(@PathVariable Integer id) {
-		service.delete(id);
+	@DeleteMapping(value = "/delete/{document}")
+	public ResponseEntity<?> delete(@PathVariable String document) {
+		service.delete(document);
 		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 }

@@ -7,24 +7,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("User")
 public class User {
 
-	@Id
-	private Integer id;
+	// @Id
+	// private Integer id;
 
 	// @MongoId
 	// private String id;
 
-	private String name;
+	
+	@Id
 	private String document;
+
+
+	private String name;
 	private String email;
 	private String phone;
 	private String username;
 	private String password;
 	private String rol;
 
-	public User(Integer id, String name, String document, String email, String phone, String username, String password,
+	public User(String name, String document, String email, String phone, String username, String password,
 			String rol) {
 		super();
-		this.id = id;
+		// this.id = id;
 		this.name = name;
 		this.document = document;
 		this.email = email;
@@ -38,13 +42,13 @@ public class User {
 		super();
 	}
 
-	public Integer getId() {
-		return id;
-	}
+	// public Integer getId() {
+	// 	return id;
+	// }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	// public void setId(Integer id) {
+	// 	this.id = id;
+	// }
 
 	public String getName() {
 		return name;
