@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.HelpMe.entity.FrecuentIncidence;
 
-public interface IFrecuentIncidenceRepo extends MongoRepository<FrecuentIncidence, Integer> {
+public interface IFrecuentIncidenceRepo extends MongoRepository<FrecuentIncidence, String> {
 
 }

@@ -7,34 +7,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class FrecuentIncidence {
 
 	@Id
-	private Integer id;
+	private String reference;
 
 	private String title;
 	private String description;
 	private String answer;
-	private String file;
-	private int idUser;
+	private File file;
+	private String documentUser;
 
-	public FrecuentIncidence(Integer id, String title, String description, String answer, String file, int idUser) {
-		super();
-		this.id = id;
+	public FrecuentIncidence() {
+	}
+
+	public FrecuentIncidence(String reference, String title, String description, String answer, File file,
+			String documentUser) {
+		this.reference = reference;
 		this.title = title;
 		this.description = description;
 		this.answer = answer;
 		this.file = file;
-		this.idUser = idUser;
+		this.documentUser = documentUser;
 	}
 
-	public FrecuentIncidence() {
-		super();
+	public String getReference() {
+		return reference;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 
 	public String getTitle() {
@@ -53,9 +52,6 @@ public class FrecuentIncidence {
 		this.description = description;
 	}
 
-
-	
-
 	public String getAnswer() {
 		return answer;
 	}
@@ -64,20 +60,20 @@ public class FrecuentIncidence {
 		this.answer = answer;
 	}
 
-	public String getFile() {
+	public File getFile() {
 		return file;
 	}
 
-	public void setFile(String file) {
+	public void setFile(File file) {
 		this.file = file;
 	}
 
-	public int getIdUser() {
-		return idUser;
+	public String getDocumentUser() {
+		return documentUser;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setDocumentUser(String documentUser) {
+		this.documentUser = documentUser;
 	}
 
 }

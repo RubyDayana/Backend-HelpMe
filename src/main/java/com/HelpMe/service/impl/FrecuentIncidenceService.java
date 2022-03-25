@@ -18,7 +18,7 @@ public class FrecuentIncidenceService implements IFrecuentincidenceService {
 
 	@Override
 	public void save(FrecuentIncidence frecuent) {
-
+ 
 		repo.save(frecuent);
 
 	}
@@ -31,17 +31,20 @@ public class FrecuentIncidenceService implements IFrecuentincidenceService {
 	}
 
 	@Override
-	public Optional<FrecuentIncidence> getById(Integer id) {
+	public Optional<FrecuentIncidence> getIncidence(String reference) {
 		
-		Optional<FrecuentIncidence> frecuent = repo.findById(id);
+		Optional<FrecuentIncidence> frecuent = repo.findById(reference);
 		return frecuent;
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public boolean delete(String reference) {
 		
-		repo.deleteById(id);
-
+		Boolean aBoolean = getIncidence(reference).map(incidence -> {
+			repo.delete(incidence);
+			return true;
+		}).orElse(false);
+		return aBoolean;
 	}
 
 	@Override

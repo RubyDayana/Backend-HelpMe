@@ -10,8 +10,8 @@ public interface IFrecuentincidenceService {
 	
 	public void save(FrecuentIncidence frecuent);
 	public List<FrecuentIncidence> all();
-	public Optional<FrecuentIncidence> getById(Integer id);
-	public void delete(Integer id);
+	public Optional<FrecuentIncidence> getIncidence(String reference);
+	public boolean delete(String reference);
 	public void update(FrecuentIncidence frecuent);
 
 }

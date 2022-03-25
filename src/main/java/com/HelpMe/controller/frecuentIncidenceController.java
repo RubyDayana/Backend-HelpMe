@@ -49,10 +49,10 @@ public class frecuentIncidenceController {
 
 	}
 
-	@GetMapping(value = "/getById/{id}", produces = "application/json")
-	public ResponseEntity<?> getById(@PathVariable Integer id) {
-		System.out.print("nombre" + id);
-		Optional<FrecuentIncidence> frecuentIncidence = service.getById(id);
+	@GetMapping(value = "/getIncidence/{reference}", produces = "application/json")
+	public ResponseEntity<?> getIncidence(@PathVariable String reference) {
+		System.out.print("nombre" + reference);
+		Optional<FrecuentIncidence> frecuentIncidence = service.getIncidence(reference);
 
 		return new ResponseEntity<>(frecuentIncidence, HttpStatus.OK);
 
@@ -66,9 +66,9 @@ public class frecuentIncidenceController {
 	}
 
 	// 204
-	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<?> delete(@PathVariable Integer id) {
-		service.delete(id);
+	@DeleteMapping(value = "/delete/{reference}")
+	public ResponseEntity<?> delete(@PathVariable String reference) {
+		service.delete(reference);
 		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 }
