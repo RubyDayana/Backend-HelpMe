@@ -8,7 +8,7 @@ public class FrecuentIncidence {
 
 	@Id
 	private String reference;
-
+	private String dateActual;
 	private String title;
 	private String description;
 	private String answer;
@@ -18,9 +18,10 @@ public class FrecuentIncidence {
 	public FrecuentIncidence() {
 	}
 
-	public FrecuentIncidence(String reference, String title, String description, String answer, File file,
-			String documentUser) {
+	public FrecuentIncidence(String reference, String dateActual, String title, String description, String answer,
+			File file, String documentUser) {
 		this.reference = reference;
+		this.dateActual = dateActual;
 		this.title = title;
 		this.description = description;
 		this.answer = answer;
@@ -34,6 +35,14 @@ public class FrecuentIncidence {
 
 	public void setReference(String reference) {
 		this.reference = reference;
+	}
+
+	public String getDateActual() {
+		return dateActual;
+	}
+
+	public void setDateActual(String dateActual) {
+		this.dateActual = dateActual;
 	}
 
 	public String getTitle() {
@@ -75,5 +84,6 @@ public class FrecuentIncidence {
 	public void setDocumentUser(String documentUser) {
 		this.documentUser = documentUser;
 	}
+
 
 }
