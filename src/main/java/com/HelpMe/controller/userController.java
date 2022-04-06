@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,7 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.HelpMe.entity.User;
+import com.HelpMe.exception.ConflictException;
+import com.HelpMe.exception.ModelNotFoundException;
 import com.HelpMe.service.IUserService;
+
+
 
 
 @RequestMapping("/user")
@@ -31,7 +37,7 @@ public class userController {
 	private IUserService service;
 
 	@PostMapping(value = "/save")
-	public ResponseEntity<?> save(@RequestBody User user) {
+	public ResponseEntity<?> save(@RequestBody User user) throws ConflictException, ModelNotFoundException {
 
 		service.save(user);
 		System.out.print("Entro mondog");
@@ -46,7 +52,11 @@ public class userController {
 		return new ResponseEntity<>(list, HttpStatus.OK);
 
 	}
-
+	@GetMapping(value = "/obtenerPaginado/{page}/{size}", produces = "application/json")
+	public ResponseEntity<?> retonarPaginado(@PathVariable int page, @PathVariable int size) {
+		Page<User> listaUser = service.retornarPaginado(page, size);
+		return new ResponseEntity<Page<User>>(listaUser, HttpStatus.OK);
+	}
 	@GetMapping(value = "/getUser/{document}", produces = "application/json")
 	public ResponseEntity<?> getUser(@PathVariable String document) {
 		System.out.print("nombre" + document);
