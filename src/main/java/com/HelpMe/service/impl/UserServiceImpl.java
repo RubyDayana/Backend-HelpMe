@@ -21,6 +21,9 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserRepo repo;
 
+	/*
+	 * Metodo Para registro de usuarios nuevos
+	 */
 	@Override
 	public void save(User user) throws ConflictException {
 
@@ -33,12 +36,18 @@ public class UserServiceImpl implements IUserService {
 		}
 	}
 
+	/**
+	 * Medoto para retrnar todos los usuarios
+	 */
 	@Override
 	public List<User> all() {
 		List<User> list = repo.findAll();
 		return list;
 	}
 
+	/**
+	 * Metodo para obtener usuario por documento
+	 */
 	@Override
 	public Optional<User> getUser(String document) {
 		System.out.print("id service" + document);
@@ -46,6 +55,9 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 
+	/**
+	 * Metodo para eliminar usuarios
+	 */
 	@Override
 	public boolean delete(String document) {
 
@@ -56,25 +68,35 @@ public class UserServiceImpl implements IUserService {
 		return aBoolean;
 
 	}
+	/**
+	 * Metodo para actualizar pendiente validar user 
+	 * 
+	 * @throws ConflictException 
+	 */
 
 	@Override
-	public void update(User user) {
-
-		repo.save(user);
+	public void update(User user) throws ConflictException {
+		
+		if (repo.existsByEmail(user.getEmail())) {
+			throw new ConflictException("Email ya existe");
+		} else {
+			repo.save(user);
+		}
 	}
 
+	/**
+	 * MEtodo para devolver usuarios paginados "Este es el funcional con pagina y cantidad"
+	 */
 	@Override
 	public Page<User> retornarPaginado(int page, int size) {
 		return repo.findAll(PageRequest.of(page, size));
 		
 	}
 
-	@Override
-	public Page<User> all(Pageable page) {
-
-		return repo.findAll(page);
-	}
-
+	
+/**
+ * Metodo no sirve es de la  interfaz Icrud
+ */
 	@Override
 	public User retonarPorId(String idUser) throws ModelNotFoundException {
 

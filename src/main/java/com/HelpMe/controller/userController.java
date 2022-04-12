@@ -67,7 +67,7 @@ public class userController {
 	}
 
 	@PutMapping(value = "/update", consumes = "application/json")
-	public ResponseEntity<?> update(@RequestBody User user) {
+	public ResponseEntity<?> update(@RequestBody User user) throws ConflictException {
 		service.update(user);
 
 		return new ResponseEntity<Object>(user, HttpStatus.OK);

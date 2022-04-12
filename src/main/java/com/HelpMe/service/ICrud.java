@@ -14,7 +14,7 @@ public interface ICrud <T, ID>{
 
 	public Page<T> retornarPaginado(int page, int size);
 
-	public Page<T> all(Pageable page);
+
 
 	public T retonarPorId(ID idUser) throws ModelNotFoundException ;
 
